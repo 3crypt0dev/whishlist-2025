@@ -1,37 +1,185 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Eduards Weihnachtswunschliste 2025</title>
   <style>
-    :root{--bg:#00140a;--neon:#00ff66}
-    html,body{height:100%;margin:0;background:radial-gradient(circle at 10% 10%, #002214 0%, #000 60%),var(--bg);color:var(--neon);font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, 'Courier New', monospace;}
-    canvas#matrix{position:fixed;inset:0;z-index:0;opacity:0.25}
-    .wrap{position:relative;z-index:2;min-height:100vh;display:flex;align-items:center;justify-content:center;}
-    .card{background:linear-gradient(180deg, rgba(0,0,0,0.28), rgba(0,0,0,0.55));border:1px solid rgba(0,255,102,0.06);padding:2rem;border-radius:12px;backdrop-filter:blur(4px);box-shadow:0 10px 40px rgba(0,0,0,0.6);max-width:980px;width:90%}
-    h1{margin:0;color:var(--neon);font-size:clamp(1.4rem,3vw,2.6rem);text-shadow:0 0 10px rgba(0,255,102,0.08)}
-    .sub{color:#9fffa044;margin:0.4rem 0 1.2rem}
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:0.9rem}
-    .item{padding:0.9rem;border-radius:10px;background:linear-gradient(90deg, rgba(0,255,102,0.02), rgba(0,255,102,0.01));border:1px solid rgba(0,255,102,0.04);transition:transform .14s ease,box-shadow .14s ease}
-    .item:hover{transform:translateY(-6px);box-shadow:0 12px 30px rgba(0,255,102,0.05)}
-    .item a{color:var(--neon);text-decoration:none;font-weight:700}
-    .item p{color:#bfffc088;margin:0.5rem 0 0;font-size:0.92rem}
-    .item.center {grid-column: 1/-1;justify-self: center;text-align: center;max-width: 420px;}
-    .terminal{margin-top:1.1rem;background:#001a0d;padding:11px;border-radius:8px;border:1px solid rgba(0,255,102,0.04);font-family:monospace;color:#aaffc6;text-align:left;font-size:0.92rem}
-    .footer{margin-top:1rem;color:#8affb04a;font-size:0.85rem}
-    .badge{display:inline-block;background:rgba(0,255,102,0.04);color:var(--neon);padding:3px 8px;border-radius:6px;font-size:0.78rem;margin-right:8px;border:1px solid rgba(0,255,102,0.04)}
+    :root {
+      --bg: #00140a;
+      --neon: #00ff66
+    }
+
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      background: radial-gradient(circle at 10% 10%, #002214 0%, #000 60%), var(--bg);
+      color: var(--neon);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, 'Courier New', monospace;
+    }
+
+    canvas#matrix {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      opacity: 0.25
+    }
+
+    .wrap {
+      position: relative;
+      z-index: 2;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card {
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.55));
+      border: 1px solid rgba(0, 255, 102, 0.06);
+      padding: 2rem;
+      border-radius: 12px;
+      backdrop-filter: blur(4px);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+      max-width: 980px;
+      width: 90%
+    }
+
+    h1 {
+      margin: 0;
+      color: var(--neon);
+      font-size: clamp(1.4rem, 3vw, 2.6rem);
+      text-shadow: 0 0 10px rgba(0, 255, 102, 0.08)
+    }
+
+    .sub {
+      color: #9fffa044;
+      margin: 0.4rem 0 1.2rem
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 0.9rem
+    }
+
+    .item {
+      padding: 0.9rem;
+      border-radius: 10px;
+      background: linear-gradient(90deg, rgba(0, 255, 102, 0.02), rgba(0, 255, 102, 0.01));
+      border: 1px solid rgba(0, 255, 102, 0.04);
+      transition: transform .14s ease, box-shadow .14s ease
+    }
+
+    .item:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 30px rgba(0, 255, 102, 0.05)
+    }
+
+    .item a {
+      color: var(--neon);
+      text-decoration: none;
+      font-weight: 700
+    }
+
+    .item p {
+      color: #bfffc088;
+      margin: 0.5rem 0 0;
+      font-size: 0.92rem
+    }
+
+    .item.center {
+      grid-column: 1/-1;
+      justify-self: center;
+      text-align: center;
+      max-width: 420px;
+    }
+
+    .terminal {
+      margin-top: 1.1rem;
+      background: #001a0d;
+      padding: 11px;
+      border-radius: 8px;
+      border: 1px solid rgba(0, 255, 102, 0.04);
+      font-family: monospace;
+      color: #aaffc6;
+      text-align: left;
+      font-size: 0.92rem
+    }
+
+    .footer {
+      margin-top: 1rem;
+      color: #8affb04a;
+      font-size: 0.85rem
+    }
+
+    .badge {
+      display: inline-block;
+      background: rgba(0, 255, 102, 0.04);
+      color: var(--neon);
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 0.78rem;
+      margin-right: 8px;
+      border: 1px solid rgba(0, 255, 102, 0.04)
+    }
+
     /* center-specific rule for the final tile */
-    .item.center{justify-self:center;text-align:center;max-width:420px}
-    @media (max-width:420px){.card{padding:1rem}}
+    .item.center {
+      justify-self: center;
+      text-align: center;
+      max-width: 420px
+    }
+
+    @media (max-width:420px) {
+      .card {
+        padding: 1rem
+      }
+    }
+
+    .dog-badge {
+      position: fixed;
+      top: 32px;
+      right: 32px;
+      width: 110px;
+      height: 110px;
+      object-fit: cover;
+      border-radius: 22px 60px 20px 60px/50px 40px 70px 40px;
+      border: 3px solid #00ff6688;
+      box-shadow: 0 6px 32px #00ff6630, 0 0 0 7px #00140a;
+      transform: rotate(45deg);
+      z-index: 100;
+      transition: box-shadow 0.2s, border-color 0.2s;
+      background: #001612;
+    }
+
+    .dog-badge:hover {
+      filter: brightness(1.18) contrast(1.2) drop-shadow(0 0 9px #08fd958b);
+      border-color: #30ffad;
+      box-shadow: 0 0 20px 5px #29ff9938, 0 0 0 11px #00140a55;
+    }
+
+    @media (max-width:500px) {
+      .dog-badge {
+        top: 8px;
+        right: 8px;
+        width: 70px;
+        height: 70px;
+      }
+    }
   </style>
 </head>
+
 <body>
   <canvas id="matrix"></canvas>
   <div class="wrap">
+    <img src="assets/dog.jpg" alt="Dog badge" class="dog-badge" />
     <main class="card" role="main" aria-label="Nerdy wishlist for Santa's sysadmin">
       <h1>Guess who runs Santa's servers?</h1>
-      <p class="sub">A slightly over-provisioned wishlist published just before the end of the black friday sale at 23:59.</p>
+      <p class="sub">A slightly over-provisioned wishlist published just before the end of the black friday sale at
+        23:59.</p>
 
       <section class="grid">
         <article class="item">
@@ -48,8 +196,10 @@
 
         <article class="item">
           <span class="badge">3</span>
-          <a href="https://www.bergfreunde.de/cafe-kraft-zoom-boulderhose/?aid=148c64f6e7d0f534d7aa9e64ede8400c&cnid=286e062b3e8740d2a5b9ed8ae3ec9">Kletterhose</a>
-          <p>Damit ich nicht nur Server hochfahre, sondern auch Wände hochkomme: Eine Kletterhose wäre mein bestes Weihnachts-Upgrade</p>
+          <a
+            href="https://www.bergfreunde.de/cafe-kraft-zoom-boulderhose/?aid=148c64f6e7d0f534d7aa9e64ede8400c&cnid=286e062b3e8740d2a5b9ed8ae3ec9">Kletterhose</a>
+          <p>Damit ich nicht nur Server hochfahre, sondern auch Wände hochkomme: Eine Kletterhose wäre mein bestes
+            Weihnachts-Upgrade</p>
         </article>
 
         <article class="item">
@@ -66,15 +216,16 @@
       </section>
 
       <div class="terminal" aria-live="polite">$ ssh santa@northpole.local && ./sleighctl status
-[OK] 12 nodes healthy • 3 backups running • last deploy 2h ago • next maintenance: 03:00 UTC</div>
+        [OK] 12 nodes healthy • 3 backups running • last deploy 2h ago • next maintenance: 03:00 UTC</div>
 
-      <p class="footer">Made with LEDs, coffee, and a too-familiar love of green terminals. Happy hacking — and happy holidays!</p>
+      <p class="footer">Made with LEDs, coffee, and a too-familiar love of green terminals. Happy hacking — and happy
+        holidays!</p>
     </main>
   </div>
 
   <script>
     // Simple "Matrix"-style falling characters canvas
-    (function(){
+    (function () {
       const canvas = document.getElementById('matrix');
       const ctx = canvas.getContext('2d');
       let w = canvas.width = innerWidth;
@@ -83,24 +234,24 @@
       const ypos = Array(cols).fill(0);
       const chars = '01<>/\\{}[]()@#$%&*+-=abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
-      function resize(){
+      function resize() {
         w = canvas.width = innerWidth;
         h = canvas.height = innerHeight;
       }
       window.addEventListener('resize', resize);
 
-      function draw(){
+      function draw() {
         ctx.fillStyle = 'rgba(0,20,8,0.12)';
-        ctx.fillRect(0,0,w,h);
+        ctx.fillRect(0, 0, w, h);
         ctx.fillStyle = '#00ff66';
         ctx.font = '13pt monospace';
 
-        for(let i=0;i<cols;i++){ 
-          const text = chars.charAt(Math.floor(Math.random()*chars.length));
-          const x = i*14;
-          const y = ypos[i]*16;
+        for (let i = 0; i < cols; i++) {
+          const text = chars.charAt(Math.floor(Math.random() * chars.length));
+          const x = i * 14;
+          const y = ypos[i] * 16;
           ctx.fillText(text, x, y);
-          if(y > h && Math.random() > 0.975) ypos[i]=0; else ypos[i]++;
+          if (y > h && Math.random() > 0.975) ypos[i] = 0; else ypos[i]++;
         }
         requestAnimationFrame(draw);
       }
@@ -108,4 +259,5 @@
     })();
   </script>
 </body>
+
 </html>
