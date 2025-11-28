@@ -155,6 +155,23 @@
       background: #001612;
     }
 
+    .dog-badge.fullscreen {
+      top: 50%;
+      left: 50%;
+      right: unset;
+      bottom: unset;
+      width: 75vw;
+      height: 75vw;
+      max-height: 80vh;
+      min-width: 160px;
+      min-height: 160px;
+      transform: translate(-50%, -50%) rotate(0deg) scale(1.07);
+      border-radius: 36px 36px 18px 18px/45px 58px 45px 40px;
+      box-shadow: 0 0 110px 12px #07ff96a0, 0 0 20px 7px #1085476b;
+      border: 4px solid #08fd95;
+      filter: brightness(1.08) contrast(1.18) drop-shadow(0 0 18px #08fd9599);
+    }
+
     .dog-badge:hover {
       filter: brightness(1.18) contrast(1.2) drop-shadow(0 0 9px #08fd958b);
       border-color: #30ffad;
@@ -168,6 +185,15 @@
         width: 70px;
         height: 70px;
       }
+
+      .dog-badge.fullscreen {
+        width: 94vw;
+        height: 94vw;
+        max-width: 95vw;
+        max-height: 84vh;
+        min-width: 120px;
+        min-height: 120px;
+      }
     }
   </style>
 </head>
@@ -175,7 +201,7 @@
 <body>
   <canvas id="matrix"></canvas>
   <div class="wrap">
-    <img src="./assets/mali_small.jpg" alt="Dog badge" class="dog-badge" />
+    <img src="./assets/mali_small.jpg" id="mali" alt="Dog badge" class="dog-badge" />
     <main class="card" role="main" aria-label="Nerdy wishlist for Santa's sysadmin">
       <h1>Guess who runs Santa's servers?</h1>
       <p class="sub">A slightly over-provisioned wishlist published just before the end of the black friday sale at
@@ -257,6 +283,11 @@
       }
       draw();
     })();
+    const dog = document.getElementById('mali');
+    dog.addEventListener('click', function (e) {
+      dog.classList.toggle('fullscreen');
+      e.preventDefault();
+    });
   </script>
 </body>
 
