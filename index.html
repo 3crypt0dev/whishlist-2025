@@ -20,6 +20,8 @@
     .terminal{margin-top:1.1rem;background:#001a0d;padding:11px;border-radius:8px;border:1px solid rgba(0,255,102,0.04);font-family:monospace;color:#aaffc6;text-align:left;font-size:0.92rem}
     .footer{margin-top:1rem;color:#8affb04a;font-size:0.85rem}
     .badge{display:inline-block;background:rgba(0,255,102,0.04);color:var(--neon);padding:3px 8px;border-radius:6px;font-size:0.78rem;margin-right:8px;border:1px solid rgba(0,255,102,0.04)}
+    /* center-specific rule for the final tile */
+    .item.center{justify-self:center;text-align:center;max-width:420px}
     @media (max-width:420px){.card{padding:1rem}}
   </style>
 </head>
@@ -51,11 +53,11 @@
 
         <article class="item">
           <span class="badge">4</span>
-          <a href="https://www.audible.de/mk/g/geschenke-center"">Audible Abo</a>
+          <a href="https://www.audible.de/mk/g/geschenke-center">Audible Abo</a>
           <p>Mein Kopf kompiliert am liebsten Geschichten – ein Audible-Gutschein wäre der perfekte Input.</p>
         </article>
 
-        <article class="item">
+        <article class="item center">
           <span class="badge">5</span>
           <a href="#">Überraschung</a>
           <p>Überrasch mich einfach – ich bin für jedes Upgrade offen</p>
@@ -65,7 +67,7 @@
       <div class="terminal" aria-live="polite">$ ssh santa@northpole.local && ./sleighctl status
 [OK] 12 nodes healthy • 3 backups running • last deploy 2h ago • next maintenance: 03:00 UTC</div>
 
-      <p class="footer">Made with LEDs, coffee, and a too-familiar love of green terminals. Happy hacking — and happy holidays!</p>
+      <p class="footer">Made with LEDs, coffee, and a too-familiar love of green terminals. Happy hacking — und happy holidays!</p>
     </main>
   </div>
 
